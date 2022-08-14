@@ -295,7 +295,7 @@ def rxPolling():
 
 def listPortsPolling():
 	global ports
-	ps = {p.name: p.description for p in list_ports.comports()}
+	ps = {p.device: p.description for p in list_ports.comports()}
 	pn = sorted(ps)
 	if pn != portCbo['values']:
 		portCbo['values'] = pn
@@ -419,7 +419,7 @@ if __name__ == '__main__':
 	PARITY = (serial.PARITY_EVEN, serial.PARITY_ODD, serial.PARITY_NONE, serial.PARITY_MARK, serial.PARITY_SPACE)
 	PARITY_VAL = ('Even', 'Odd', 'None', 'Mark', 'Space')
 	STOPBITS = (serial.STOPBITS_ONE, serial.STOPBITS_ONE_POINT_FIVE, serial.STOPBITS_TWO)
-	ports = {p.name: p.description for p in list_ports.comports()}
+	ports = {p.device: p.description for p in list_ports.comports()}
 	currentPort = serial.Serial(port=None, baudrate=9600, timeout=0, write_timeout=0)
 	portDesc = ''
 	sentTexts = []
